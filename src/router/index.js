@@ -4,6 +4,7 @@ import Index from '@/pages/index';
 import MainLogin from '@/pages/login';
 import RecordEntry from '@/pages/recordEntry';
 import BatchFill from '@/pages/batchFill';
+import AcademySelect from '@/pages/academySelect';
 
 Vue.use(Router)
 
@@ -40,6 +41,14 @@ export default new Router({
         meta: {
           keepAlive: true,
           title: '选择批次填报',
+        }
+      },{
+        path: '/AcademySelect',
+        name: 'AcademySelect',
+        component: AcademySelect,
+        meta: {
+          keepAlive: true,
+          title: '选择院校专业',
         }
       }]
     }

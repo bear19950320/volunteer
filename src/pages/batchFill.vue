@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="right-li">
-                            <el-button>{{item.btnText}}</el-button>
+                            <el-button @click="selectDeclare(index)">{{item.btnText}}</el-button>
                         </div>
                     </li>
                 </ul>
@@ -113,7 +113,40 @@ export default {
     }else{
         _that.$router.push('/recordEntry');
     }
-  }
+  },
+  methods:{
+        selectDeclare(index){
+          var _that = this;
+          if(index == 0){
+                this.$alert('武警，军校，公安，司法，免费师范生，小语种，港校等特色院校及专业可以选择提前批！', '提前批', {
+                    confirmButtonText: '立即填报',
+                    callback: action => {
+                        sessionStorage.token = true;
+                        setTimeout(function(){
+                            _that.$router.push("/AcademySelect");
+                        },1500);
+                    }
+                })
+          }else{
+                this.$alert('仅限于购买圆梦卡用户使用', '标题名称', {
+                    confirmButtonText: '免费试用',
+                    cancelButtonText: '没有圆梦卡,购买',
+                    callback: action => {
+                        this.$message({
+                            type: 'info',
+                            message: `暂未开放`
+                        });
+                    },
+                    callback: cancel => {
+                        sessionStorage.token = true;
+                        setTimeout(function(){
+                            _that.$router.push("/AcademySelect");
+                        },1500);
+                    }
+                })
+          }
+        }
+    }
 };
 </script>
 
